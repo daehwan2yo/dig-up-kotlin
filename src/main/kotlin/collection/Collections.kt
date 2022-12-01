@@ -61,10 +61,11 @@ internal object EmptyList : List<Nothing>, Serializable, RandomAccess {
 /**
  * immutable 한 empty list 를 반환한다.
  */
-fun <T> emptyList(): List<T> = EmptyList
+fun emptyList(): List<*> = EmptyList
 
-fun <T> listOf(vararg elements: T): List<T> = if (elements.size > 0) elements.asList() else emptyList()
+fun <T> listOf(vararg elements: T): List<*> = if (elements.size > 0) elements.asList() else emptyList()
 
+/*
 fun <T> mutableListOf(vararg elements: T): MutableList<T> =
     // 입력된 element 가 없으면 빈 ArrayList 를, 있다면 MutableList 구현체를 반환해준다.
-    if(elements.size == 0) ArrayList() // TODO
+    if(elements.size == 0) ArrayList() // TODO*/
