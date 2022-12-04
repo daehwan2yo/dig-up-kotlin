@@ -1,0 +1,3 @@
+package collection
+
+interface Mutable {}
