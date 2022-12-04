@@ -1,3 +1,3 @@
 package collection
 
-interface Mutable {}
+interface Mutable<out T> {}
