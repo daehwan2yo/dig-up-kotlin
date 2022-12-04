@@ -11,7 +11,7 @@ interface Collection<out E> : Iterable<E> {
     override fun iterator(): Iterable.Iterator<E>
 }
 
-interface MutableCollection<E> : Collection<E>, MutableIterable<E> {
+interface MutableCollection<E>: Collection<E>, MutableIterable<E> {
     override fun iterator(): MutableIterable.MutableIterator<E>
 
     fun add(element: E): Boolean
