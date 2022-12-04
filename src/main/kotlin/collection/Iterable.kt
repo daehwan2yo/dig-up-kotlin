@@ -9,7 +9,7 @@ interface Iterable<out T> {
     }
 }
 
-interface MutableIterable<out T> : Iterable<T> {
+interface MutableIterable<out T> : Iterable<T>, Mutable<T> {
     override fun iterator(): MutableIterator<T>
 
     interface MutableIterator<out T> : Iterable.Iterator<T> {
