@@ -11,7 +11,7 @@ interface Collection<out E> : Iterable<E> {
     override fun iterator(): Iterable.Iterator<E>
 }
 
-interface MutableCollection<E>: Collection<E>, MutableIterable<E> {
+interface MutableCollection<E> : Collection<E>, MutableIterable<E> {
     override fun iterator(): MutableIterable.MutableIterator<E>
 
     fun add(element: E): Boolean
@@ -67,4 +67,30 @@ interface MutableList<E> : List<E>, MutableCollection<E> {
 
     // View
     override fun subList(fromIndex: Int, toIndex: Int): MutableList<E>
+}
+
+interface Set<out E> : Collection<E> {
+    override val size: Int
+
+    override fun isEmpty(): Boolean
+    override fun contains(elements: @UnsafeVariance E): Boolean
+    override fun iterator(): Iterable.Iterator<E>
+
+    // Bulk Operations
+    override fun containsAll(elements: Collection<@UnsafeVariance E>): Boolean
+}
+
+interface MutableSet<E> : Set<E>, MutableCollection<E> {
+    override fun iterator(): MutableIterable.MutableIterator<E>
+
+    override fun add(element: E): Boolean
+    override fun remove(element: E): Boolean
+
+    // Bulk Operations
+    override fun addAll(elements: Collection<E>): Boolean
+    override fun removeAll(elements: Collection<E>): Boolean
+
+    override fun retainAll(elements: Collection<E>): Boolean
+
+    override fun clear()
 }
