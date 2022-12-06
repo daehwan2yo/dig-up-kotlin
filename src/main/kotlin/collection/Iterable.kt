@@ -27,3 +27,18 @@ interface ListIterator<out T> : Iterable.Iterator<T> {
     fun nextIndex(): Int
     fun previousIndex(): Int
 }
+
+interface MutableListIterator<T> : ListIterator<T>, MutableIterable.MutableIterator<T> {
+    override fun remove(): Unit
+
+    /**
+     * replace the last element returned by [next] or [previous] with the specified element [element]
+     */
+    fun set(element: T): Unit
+
+    /**
+     * add the specified element [element] into the underlying collection immediately before the element that would
+     * be returned by next
+     */
+    fun add(element: T): Unit
+}
