@@ -1,29 +1,33 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+group = "org.playground"
+version = "1.0.0"
 
 plugins {
-    kotlin("jvm") version "1.7.10"
-    application
+    kotlin("jvm") apply true
 }
-
-group = "org.playground"
-version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(kotlin("test"))
+buildscript {
+    repositories {
+        mavenCentral()
+    }
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
+subprojects {
+    apply(plugin = "kotlin")
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-}
+    repositories {
+        mavenCentral()
+    }
 
-application {
-    mainClass.set("MainKt")
+    tasks.getByName<Test>("test") {
+        useJUnitPlatform()
+    }
+
+    dependencies {
+        testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
+        testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+    }
 }
