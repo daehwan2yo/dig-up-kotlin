@@ -1,5 +1,5 @@
 rootProject.name = "dig-up-kotlin"
-include("kotlin", "kotlinx")
+include("kotlin", "kotlinx", "reactor")
 
 pluginManagement {
 
